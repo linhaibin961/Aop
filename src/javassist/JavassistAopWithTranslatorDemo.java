@@ -43,12 +43,14 @@ public class JavassistAopWithTranslatorDemo {
             b.doSomeThing();
         }
 
+        @Override
         public void start(ClassPool pool) throws NotFoundException, CannotCompileException {
         }
 
         /* *
          * 类装载到JVM前进行代码织入
          */
+        @Override
         public void onLoad(ClassPool pool, String classname) {
             System.out.println("MyTranslator onLoad classname: " + classname);
             if (!"model.Business".equals(classname)) {
